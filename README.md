@@ -3,8 +3,7 @@
 A modern developer portfolio built to showcase my technical skills, academic achievements, projects, certifications, and professional journey as an MCA student.
 
 ## Live Website
-
-Coming Soon
+https://amit-ghoyal.vercel.app/
 
 ## About Me
 

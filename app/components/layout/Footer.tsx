@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer>
+    <footer className="footer">
       <div className="footer-inner">
 
         <div className="footer-logo">
@@ -13,19 +13,14 @@ export default function Footer() {
           <a href="#projects">Projects</a>
           <a href="#memories">Memories</a>
           <a href="#contact">Contact</a>
-
-          <a
-            href="/resume.pdf"
-            download
-          >
-            Résumé
+          <a href="/resume.pdf" className="footer-resume" download>
+            Résumé ↓
           </a>
         </div>
 
-        <div>
+        <div className="footer-copy">
           © {new Date().getFullYear()} Amit Ghoyal.
-          Built with <strong>Next.js</strong> &
-          curiosity.
+          Built with <strong>Next.js</strong> & curiosity.
         </div>
 
       </div>
