@@ -81,7 +81,7 @@ export default function Education() {
               </p>
 
               <span className="tl-badge">
-                XX%
+                66.53%
               </span>
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function Education() {
               </div>
 
               <div className="tl-inst">
-                Suman High School No. 2, Surat
+                Suman High School No. 2, Surat (GSEB)
               </div>
 
               <p className="tl-desc">
@@ -105,7 +105,7 @@ export default function Education() {
               </p>
 
               <span className="tl-badge gold">
-                XX%
+                65.67%
               </span>
             </div>
           </div>
