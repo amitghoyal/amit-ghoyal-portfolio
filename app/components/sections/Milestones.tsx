@@ -13,10 +13,10 @@ type Milestone = {
   org: string;
   year: string;
   description: string;
-  images: string[]; // supports 1 or many — certificates, trophies, photos
+  images: string[];
 };
 
-// ─── DATA — edit / extend freely ─────────────────────────────────────────────
+// ─── DATA ─────────────────────────────────────────────────────────────────────
 
 const milestones: Milestone[] = [
   {
@@ -30,13 +30,8 @@ const milestones: Milestone[] = [
     title: "Best Leader Award",
     org: "Trendsetters Marketing Club",
     year: "2025",
-    description:
-      "Recognized for outstanding leadership, team management, and contribution to club activities.",
-    images: [
-      "/milestones/best-leader-certificate.jpg",
-      "/milestones/best-leader-trophy.jpg",
-      "/milestones/best-leader-award-photo.jpg",
-    ],
+    description: "Recognized for outstanding leadership, team management, and contribution to club activities.",
+    images: ["/milestones/best-leader-certificate.jpg", "/milestones/best-leader-trophy.jpg", "/milestones/best-leader-award-photo.jpg"],
   },
   {
     icon: (
@@ -49,13 +44,8 @@ const milestones: Milestone[] = [
     title: "Academic Excellence Award",
     org: "College Academic Committee",
     year: "2024",
-    description:
-      "Awarded for exceptional academic performance and securing top ranks during the 2023–24 academic year.",
-    images: [
-      "/milestones/academic-excellence-sem-3.jpg",
-      "/milestones/academic-excellence-sem-4.jpg",
-      "/milestones/academic-excellence-sem-5.jpg",
-    ],
+    description: "Awarded for exceptional academic performance and securing top ranks during the 2023–24 academic year.",
+    images: ["/milestones/academic-excellence-sem-3.jpg", "/milestones/academic-excellence-sem-4.jpg", "/milestones/academic-excellence-sem-5.jpg"],
   },
   {
     icon: (
@@ -71,74 +61,57 @@ const milestones: Milestone[] = [
     title: "Bloggers Paradise — 1st Prize",
     org: "Inter-College Blogging Competition",
     year: "2024",
-    description:
-      "Won 1st Prize for creative writing and content strategy in the inter-college blogging competition.",
-    images: [
-      "/milestones/bloggers-certificate.jpeg",
-      "/milestones/bloggers-trophy.jpeg",
-      "/milestones/bloggers-team.jpeg",
-    ],
+    description: "Won 1st Prize for creative writing and content strategy in the inter-college blogging competition.",
+    images: ["/milestones/bloggers-certificate.jpeg", "/milestones/bloggers-trophy.jpeg", "/milestones/bloggers-team.jpeg"],
   },
-{
-  icon: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="8" r="6"/>
-      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
-    </svg>
-  ),
-  colorClass: "rose",
-  category: "award",
-  title: "Advertisement Competition — Runner-Up",
-  org: "Antarang 2K24, C.K. Pithawala College Campus",
-  year: "2024",
-  description:
-    "Awarded Runner-Up in the VIGYAPTI Advertisement Making Competition during Antarang 2K24 for developing an innovative and impactful advertising campaign. Collaborated with the team to create compelling concepts, strategic messaging, and engaging presentations, showcasing creativity, communication, teamwork, and marketing skills in a competitive inter-college environment.",
-  images: [
-    "/milestones/advertisement-certificate.png",
-  ],
-},
-{
-  icon: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M9 18V5l12-2v13"/>
-      <circle cx="6" cy="18" r="3"/>
-      <circle cx="18" cy="16" r="3"/>
-    </svg>
-  ),
-  colorClass: "gold",
-  category: "award",
-  title: "Group Dance Competition — Winner",
-  org: "Antarang 2K24, C.K. Pithawala College Campus",
-  year: "2024",
-  description:
-    "Won the THIRAK Group Dance Competition at Antarang 2K24 as a member of the college dance team. Delivered a synchronized and energetic performance through dedicated practice, coordination, and teamwork, demonstrating discipline, collaboration, confidence, and stage presence while representing the college in the annual cultural festival.",
-  images: [
-    "/milestones/dance-certificate.png",
-    "/milestones/dance-team.jpg",
-    "/milestones/solo.jpeg",
-  ],
-},
   {
-  icon: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2l3 6 6 .9-4.5 4.4L17.5 20 12 17l-5.5 3 1-6.7L3 8.9 9 8z"/>
-    </svg>
-  ),
-  colorClass: "gold",
-  category: "leadership",
-  title: "Event Coordinator Appreciation",
-  org: "Antarang 2K24 – C.K. Pithawala College Campus",
-  year: "2024",
-  description:
-    "Received a Certificate of Appreciation for serving as the Coordinator of the VIGYAPTI – Advertisement Making Competition during Antarang 2K24. Successfully coordinated event planning, participant management, and smooth execution, demonstrating leadership, teamwork, and organizational skills.",
-  images: [
-    "/milestones/coordinator-certificate.png",
-  ],
-},
-
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="8" r="6"/>
+        <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+      </svg>
+    ),
+    colorClass: "rose",
+    category: "award",
+    title: "Advertisement Competition — Runner-Up",
+    org: "Antarang 2K24, C.K. Pithawala College",
+    year: "2024",
+    description: "Awarded Runner-Up in the VIGYAPTI Advertisement Making Competition at Antarang 2K24 for developing an innovative and impactful advertising campaign.",
+    images: ["/milestones/advertisement-certificate.png"],
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 18V5l12-2v13"/>
+        <circle cx="6" cy="18" r="3"/>
+        <circle cx="18" cy="16" r="3"/>
+      </svg>
+    ),
+    colorClass: "gold",
+    category: "award",
+    title: "Group Dance Competition — Winner",
+    org: "Antarang 2K24, C.K. Pithawala College",
+    year: "2024",
+    description: "Won the THIRAK Group Dance Competition at Antarang 2K24. Delivered a synchronized performance through dedicated practice, coordination, and teamwork.",
+    images: ["/milestones/dance-certificate.png", "/milestones/dance-team.jpg", "/milestones/solo.jpeg"],
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2l3 6 6 .9-4.5 4.4L17.5 20 12 17l-5.5 3 1-6.7L3 8.9 9 8z"/>
+      </svg>
+    ),
+    colorClass: "gold",
+    category: "leadership",
+    title: "Event Coordinator Appreciation",
+    org: "Antarang 2K24 – C.K. Pithawala College",
+    year: "2024",
+    description: "Received a Certificate of Appreciation for serving as Coordinator of VIGYAPTI – Advertisement Making Competition during Antarang 2K24.",
+    images: ["/milestones/coordinator-certificate.png"],
+  },
 ];
 
-// ─── PALETTE ──────────────────────────────────────────────────────────────────
+// ─── PALETTE ─────────────────────────────────────────────────────────────────
 
 const palette = {
   teal:   { bg: "rgba(18,169,126,0.15)",  icon: "#12A97E", border: "rgba(18,169,126,0.35)", bar: "#12A97E" },
@@ -155,28 +128,21 @@ const categoryLabel: Record<MilestoneCategory, string> = {
   leadership: "Leadership",
 };
 
-// ─── IMAGE SLIDER (inside modal) ─────────────────────────────────────────────
+// ─── IMAGE SLIDER ─────────────────────────────────────────────────────────────
 
 function ImageSlider({ images, title }: { images: string[]; title: string }) {
   const [idx, setIdx] = useState(0);
   const [errors, setErrors] = useState<Record<number, boolean>>({});
-
   const prev = () => setIdx((i) => (i - 1 + images.length) % images.length);
   const next = () => setIdx((i) => (i + 1) % images.length);
-
   const failed = errors[idx];
 
   return (
     <div className="ms-slider">
       <div className="ms-slider-main">
         {!failed ? (
-          <img
-            key={idx}
-            src={images[idx]}
-            alt={`${title} — image ${idx + 1}`}
-            className="ms-slider-img"
-            onError={() => setErrors((e) => ({ ...e, [idx]: true }))}
-          />
+          <img key={idx} src={images[idx]} alt={`${title} — image ${idx + 1}`} className="ms-slider-img"
+            onError={() => setErrors((e) => ({ ...e, [idx]: true }))} />
         ) : (
           <div className="ms-slider-fallback">
             <svg viewBox="0 0 24 24" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" stroke="rgba(255,255,255,0.2)" fill="none" width="48" height="48">
@@ -188,51 +154,29 @@ function ImageSlider({ images, title }: { images: string[]; title: string }) {
         {images.length > 1 && (
           <>
             <button className="ms-arr ms-arr-l" onClick={prev} aria-label="Previous image">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
-                <polyline points="15 18 9 12 15 6"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
             </button>
             <button className="ms-arr ms-arr-r" onClick={next} aria-label="Next image">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
             <div className="ms-dots">
               {images.map((_, i) => (
-                <button
-                  key={i}
-                  className={`ms-dot${i === idx ? " active" : ""}`}
-                  onClick={() => setIdx(i)}
-                  aria-label={`Go to image ${i + 1}`}
-                />
+                <button key={i} className={`ms-dot${i === idx ? " active" : ""}`} onClick={() => setIdx(i)} aria-label={`Go to image ${i + 1}`} />
               ))}
             </div>
           </>
         )}
       </div>
-
-      {/* Thumbnail strip */}
       {images.length > 1 && (
         <div className="ms-thumbs">
           {images.map((src, i) => (
-            <button
-              key={i}
-              className={`ms-thumb-btn${i === idx ? " active" : ""}`}
-              onClick={() => setIdx(i)}
-              aria-label={`View image ${i + 1}`}
-            >
+            <button key={i} className={`ms-thumb-btn${i === idx ? " active" : ""}`} onClick={() => setIdx(i)} aria-label={`View image ${i + 1}`}>
               {!errors[i] ? (
-                <img
-                  src={src}
-                  alt=""
-                  className="ms-thumb-img"
-                  onError={() => setErrors((e) => ({ ...e, [i]: true }))}
-                />
+                <img src={src} alt="" className="ms-thumb-img" onError={() => setErrors((e) => ({ ...e, [i]: true }))} />
               ) : (
                 <div className="ms-thumb-fallback">
                   <svg viewBox="0 0 24 24" strokeWidth="1.5" stroke="rgba(255,255,255,0.25)" fill="none" width="16" height="16">
-                    <rect x="3" y="3" width="18" height="18" rx="2"/>
-                    <circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+                    <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
                   </svg>
                 </div>
               )}
@@ -244,36 +188,27 @@ function ImageSlider({ images, title }: { images: string[]; title: string }) {
   );
 }
 
-// ─── CARD IMAGE THUMBS (on card) ──────────────────────────────────────────────
+// ─── CARD THUMBS ─────────────────────────────────────────────────────────────
 
 function CardThumbs({ images, colorBar }: { images: string[]; colorBar: string }) {
   const [errors, setErrors] = useState<Record<number, boolean>>({});
   const show = images.slice(0, 3);
   const extra = images.length - 3;
-
   return (
     <div className="ms-card-thumbs">
       {show.map((src, i) => (
         <div key={i} className="ms-card-thumb-wrap">
           {!errors[i] ? (
-            <img
-              src={src}
-              alt=""
-              className="ms-card-thumb-img"
-              loading="lazy"
-              onError={() => setErrors((e) => ({ ...e, [i]: true }))}
-            />
+            <img src={src} alt="" className="ms-card-thumb-img" loading="lazy"
+              onError={() => setErrors((e) => ({ ...e, [i]: true }))} />
           ) : (
             <div className="ms-card-thumb-fallback" style={{ borderColor: colorBar }}>
               <svg viewBox="0 0 24 24" strokeWidth="1.5" stroke="rgba(255,255,255,0.2)" fill="none" width="18" height="18">
-                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                <circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+                <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
               </svg>
             </div>
           )}
-          {i === 2 && extra > 0 && (
-            <div className="ms-card-thumb-more">+{extra + 1}</div>
-          )}
+          {i === 2 && extra > 0 && <div className="ms-card-thumb-more">+{extra + 1}</div>}
         </div>
       ))}
     </div>
@@ -285,399 +220,308 @@ function CardThumbs({ images, colorBar }: { images: string[]; colorBar: string }
 export default function Milestones() {
   const [selected, setSelected] = useState<Milestone | null>(null);
   const [filter, setFilter] = useState<MilestoneCategory | "all">("all");
+  const [carouselIdx, setCarouselIdx] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
+
+  const filtered = filter === "all" ? milestones : milestones.filter((m) => m.category === filter);
+
+  // Reset carousel index when filter changes
+  useEffect(() => { setCarouselIdx(0); }, [filter]);
+
+  // Sync carousel scroll position to carouselIdx
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const card = el.querySelector(".ms-carousel-card") as HTMLElement;
+    if (!card) return;
+    const cardW = card.offsetWidth + 16; // gap = 16px
+    el.scrollTo({ left: carouselIdx * cardW, behavior: "smooth" });
+  }, [carouselIdx]);
+
+  // Track scroll position → update dot
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const card = el.querySelector(".ms-carousel-card") as HTMLElement;
+      if (!card) return;
+      const cardW = card.offsetWidth + 16;
+      const idx = Math.round(el.scrollLeft / cardW);
+      setCarouselIdx(Math.min(idx, filtered.length - 1));
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, [filtered.length]);
 
   useEffect(() => {
     document.body.style.overflow = selected ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [selected]);
 
-  // Close on Escape
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setSelected(null); };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const filtered = filter === "all" ? milestones : milestones.filter((m) => m.category === filter);
+  const CardContent = ({ item, compact = false }: { item: Milestone; compact?: boolean }) => {
+    const p = palette[item.colorClass];
+    return (
+      <>
+        <div className="ms-card-bar" style={{ background: p.bar }} />
+        <div className="ms-card-body">
+          <div className="ms-card-top">
+            <div className="ms-card-ico" style={{ background: p.bg }}>
+              <div style={{ color: p.icon }}>{item.icon}</div>
+            </div>
+            <div className="ms-card-badges">
+              <span className="ms-card-cat" style={{ background: p.bg, color: p.icon, borderColor: p.border }}>
+                {categoryLabel[item.category]}
+              </span>
+              <span className="ms-card-year">{item.year}</span>
+            </div>
+          </div>
+          <div>
+            <p className="ms-card-title">{item.title}</p>
+            <p className="ms-card-org" style={{ color: p.icon }}>{item.org}</p>
+          </div>
+          <p className={`ms-card-desc${compact ? " ms-card-desc-compact" : ""}`}>{item.description}</p>
+        </div>
+        <CardThumbs images={item.images} colorBar={p.bar} />
+        <div className="ms-card-view-overlay">
+          <span className="ms-card-view-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke={p.icon} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="13" height="13">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+            View Details
+          </span>
+        </div>
+      </>
+    );
+  };
 
   return (
     <section className="section section-dark" id="milestones">
       <style>{`
         /* ── FILTER TABS ── */
         .ms-filters {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-          margin-bottom: 2rem;
-          justify-content: center;
+          display: flex; flex-wrap: wrap; gap: 0.5rem;
+          margin-bottom: 2rem; justify-content: center;
         }
         .ms-filter-btn {
-          padding: 0.4rem 1.1rem;
-          border-radius: 999px;
+          padding: 0.4rem 1.1rem; border-radius: 999px;
           border: 1px solid rgba(255,255,255,0.12);
-          background: transparent;
-          color: rgba(255,255,255,0.5);
+          background: transparent; color: rgba(255,255,255,0.5);
           font-family: 'Quicksand', sans-serif;
-          font-size: 0.8rem;
-          font-weight: 700;
-          cursor: pointer;
-          transition: all .22s ease;
-          letter-spacing: 0.01em;
+          font-size: 0.8rem; font-weight: 700; cursor: pointer;
+          transition: all .22s ease; letter-spacing: 0.01em;
         }
-        .ms-filter-btn:hover {
-          border-color: rgba(255,255,255,0.3);
-          color: rgba(255,255,255,0.85);
-          background: rgba(255,255,255,0.05);
-        }
-        .ms-filter-btn.active {
-          background: rgba(255,255,255,0.1);
-          border-color: rgba(255,255,255,0.28);
-          color: #fff;
-        }
+        .ms-filter-btn:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.05); }
+        .ms-filter-btn.active { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.28); color: #fff; }
 
-        /* ── GRID ── */
+        /* ── DESKTOP GRID ── */
         .ms-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
           gap: 1.2rem;
         }
+        @media (max-width: 767px) { .ms-grid { display: none; } }
 
-        /* ── CARD ── */
+        /* ── MOBILE CAROUSEL ── */
+        .ms-mobile-wrap { display: none; }
+        @media (max-width: 767px) { .ms-mobile-wrap { display: block; } }
+
+        .ms-carousel {
+          display: flex;
+          gap: 16px;
+          overflow-x: scroll;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          padding: 0.5rem 0 1rem;
+          /* peek next card on the right */
+          padding-right: 2rem;
+        }
+        .ms-carousel::-webkit-scrollbar { display: none; }
+
+        .ms-carousel-card {
+          flex: 0 0 calc(85vw);
+          max-width: 340px;
+          scroll-snap-align: start;
+          cursor: pointer;
+        }
+
+        /* Counter + dots */
+        .ms-carousel-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 0.75rem;
+          padding: 0 0.25rem;
+        }
+        .ms-carousel-counter {
+          font-size: 0.72rem; font-weight: 700;
+          color: rgba(255,255,255,0.35);
+          font-family: 'Quicksand', sans-serif;
+        }
+        .ms-carousel-dots {
+          display: flex; gap: 5px; align-items: center;
+        }
+        .ms-carousel-dot {
+          width: 6px; height: 6px; border-radius: 50%;
+          background: rgba(255,255,255,0.2);
+          border: none; padding: 0; cursor: pointer;
+          transition: all .22s;
+        }
+        .ms-carousel-dot.active {
+          background: #fff;
+          width: 18px; border-radius: 3px;
+        }
+        .ms-carousel-arrows {
+          display: flex; gap: 0.5rem;
+        }
+        .ms-carousel-arr {
+          width: 32px; height: 32px; border-radius: 50%;
+          background: rgba(255,255,255,0.08);
+          border: 1px solid rgba(255,255,255,0.12);
+          display: flex; align-items: center; justify-content: center;
+          cursor: pointer; transition: background .2s;
+        }
+        .ms-carousel-arr:hover { background: rgba(255,255,255,0.14); }
+        .ms-carousel-arr:disabled { opacity: 0.25; cursor: default; }
+        .ms-carousel-arr svg { display: block; }
+
+        /* ── SWIPE HINT (first visit only) ── */
+        .ms-swipe-hint {
+          display: flex; align-items: center; gap: 0.4rem;
+          font-size: 0.7rem; font-weight: 600;
+          color: rgba(255,255,255,0.28);
+          margin-bottom: 0.75rem;
+          font-family: 'Quicksand', sans-serif;
+          animation: hintFade 2.5s ease forwards;
+          animation-delay: 0.6s;
+          opacity: 0;
+        }
+        @keyframes hintFade {
+          0%   { opacity: 0; transform: translateX(-4px); }
+          20%  { opacity: 1; transform: translateX(0); }
+          80%  { opacity: 1; }
+          100% { opacity: 0; }
+        }
+
+        /* ── SHARED CARD SHELL ── */
         .ms-card {
           background: rgba(255,255,255,0.04);
           border: 1px solid rgba(255,255,255,0.09);
-          border-radius: 20px;
-          overflow: hidden;
-          cursor: pointer;
-          transition: all .32s cubic-bezier(.22,1,.36,1);
-          position: relative;
-          display: flex;
-          flex-direction: column;
+          border-radius: 20px; overflow: hidden;
+          cursor: pointer; transition: all .32s cubic-bezier(.22,1,.36,1);
+          position: relative; display: flex; flex-direction: column;
         }
         .ms-card:hover {
-          background: rgba(255,255,255,0.08);
-          border-color: rgba(255,255,255,0.18);
-          transform: translateY(-5px);
-          box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+          background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18);
+          transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.35);
         }
-        .ms-card-bar {
-          height: 3px;
-          width: 100%;
-          flex-shrink: 0;
-        }
+        .ms-card-bar { height: 3px; width: 100%; flex-shrink: 0; }
 
-        /* ── CARD BODY ── */
-        .ms-card-body {
-          padding: 1.4rem 1.5rem 1.2rem;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          gap: 0.9rem;
-        }
-        .ms-card-top {
-          display: flex;
-          align-items: flex-start;
-          justify-content: space-between;
-          gap: 0.5rem;
-        }
-        .ms-card-ico {
-          width: 44px; height: 44px;
-          border-radius: 11px;
-          display: flex; align-items: center; justify-content: center;
-          flex-shrink: 0;
-        }
+        .ms-card-body { padding: 1.4rem 1.5rem 1.2rem; flex: 1; display: flex; flex-direction: column; gap: 0.9rem; }
+        .ms-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+        .ms-card-ico { width: 44px; height: 44px; border-radius: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .ms-card-ico svg { width: 21px; height: 21px; }
-
-        .ms-card-badges {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-          gap: 0.3rem;
-        }
-        .ms-card-cat {
-          font-size: 0.65rem;
-          font-weight: 700;
-          padding: 0.2rem 0.6rem;
-          border-radius: 999px;
-          border: 1px solid;
-          text-transform: uppercase;
-          letter-spacing: 0.07em;
-          white-space: nowrap;
-        }
-        .ms-card-year {
-          font-size: 0.68rem;
-          font-weight: 700;
-          color: rgba(255,255,255,0.4);
-          white-space: nowrap;
-        }
-
-        .ms-card-title {
-          font-size: 0.97rem;
-          font-weight: 700;
-          color: #fff;
-          line-height: 1.3;
-          margin: 0;
-        }
-        .ms-card-org {
-          font-size: 0.75rem;
-          font-weight: 700;
-          margin-top: 0.15rem;
-        }
-        .ms-card-desc {
-          font-size: 0.8rem;
-          color: rgba(255,255,255,0.48);
-          font-weight: 500;
-          line-height: 1.7;
-          margin: 0;
-        }
-
-        /* ── CARD THUMB STRIP ── */
-        .ms-card-thumbs {
-          display: flex;
-          gap: 0.5rem;
-          padding: 0 1.5rem 1.4rem;
-        }
-        .ms-card-thumb-wrap {
-          flex: 1;
-          height: 72px;
-          border-radius: 10px;
+        .ms-card-badges { display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem; }
+        .ms-card-cat { font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 999px; border: 1px solid; text-transform: uppercase; letter-spacing: 0.07em; white-space: nowrap; }
+        .ms-card-year { font-size: 0.68rem; font-weight: 700; color: rgba(255,255,255,0.4); white-space: nowrap; }
+        .ms-card-title { font-size: 0.97rem; font-weight: 700; color: #fff; line-height: 1.3; margin: 0; }
+        .ms-card-org { font-size: 0.75rem; font-weight: 700; margin-top: 0.15rem; }
+        .ms-card-desc { font-size: 0.8rem; color: rgba(255,255,255,0.48); font-weight: 500; line-height: 1.7; margin: 0; }
+        .ms-card-desc-compact {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
           overflow: hidden;
-          position: relative;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.08);
-        }
-        .ms-card-thumb-img {
-          width: 100%; height: 100%;
-          object-fit: cover; object-position: center;
-          display: block;
-          transition: transform .4s ease;
-        }
-        .ms-card:hover .ms-card-thumb-img { transform: scale(1.06); }
-        .ms-card-thumb-fallback {
-          width: 100%; height: 100%;
-          display: flex; align-items: center; justify-content: center;
-          border-radius: 10px;
-        }
-        .ms-card-thumb-more {
-          position: absolute; inset: 0;
-          background: rgba(0,0,0,0.55);
-          display: flex; align-items: center; justify-content: center;
-          font-size: 0.82rem; font-weight: 700; color: #fff;
         }
 
-        /* ── VIEW OVERLAY ── */
-        .ms-card-view-overlay {
-          position: absolute; inset: 0;
-          background: rgba(0,0,0,0);
-          display: flex; align-items: center; justify-content: center;
-          transition: background .28s;
-          pointer-events: none;
-          border-radius: 20px;
-        }
+        /* thumbnails */
+        .ms-card-thumbs { display: flex; gap: 0.5rem; padding: 0 1.5rem 1.4rem; }
+        .ms-card-thumb-wrap { flex: 1; height: 72px; border-radius: 10px; overflow: hidden; position: relative; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+        .ms-card-thumb-img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform .4s ease; }
+        .ms-card:hover .ms-card-thumb-img { transform: scale(1.06); }
+        .ms-card-thumb-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
+        .ms-card-thumb-more { position: absolute; inset: 0; background: rgba(0,0,0,0.55); display: flex; align-items: center; justify-content: center; font-size: 0.82rem; font-weight: 700; color: #fff; }
+
+        /* hover overlay */
+        .ms-card-view-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); display: flex; align-items: center; justify-content: center; transition: background .28s; pointer-events: none; border-radius: 20px; }
         .ms-card:hover .ms-card-view-overlay { background: rgba(0,0,0,0.12); }
-        .ms-card-view-pill {
-          opacity: 0; transform: scale(0.85) translateY(6px);
-          background: rgba(255,255,255,0.95);
-          border-radius: 999px;
-          padding: 0.42rem 1rem;
-          font-size: 0.73rem; font-weight: 700; color: #111;
-          display: flex; align-items: center; gap: 0.4rem;
-          transition: all .25s cubic-bezier(.22,1,.36,1);
-          box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-          white-space: nowrap;
-        }
+        .ms-card-view-pill { opacity: 0; transform: scale(0.85) translateY(6px); background: rgba(255,255,255,0.95); border-radius: 999px; padding: 0.42rem 1rem; font-size: 0.73rem; font-weight: 700; color: #111; display: flex; align-items: center; gap: 0.4rem; transition: all .25s cubic-bezier(.22,1,.36,1); box-shadow: 0 4px 16px rgba(0,0,0,0.3); white-space: nowrap; }
         .ms-card-view-pill svg { flex-shrink: 0; }
         .ms-card:hover .ms-card-view-pill { opacity: 1; transform: scale(1) translateY(0); }
 
-        /* ── MODAL BACKDROP ── */
+        /* ── MODAL ── */
         .ms-modal-bg {
           position: fixed; inset: 0; z-index: 800;
-          background: rgba(0,0,0,0.82);
-          backdrop-filter: blur(12px);
-          display: flex;
-          align-items: flex-end;
-          justify-content: center;
-          padding: 0;
-          opacity: 0; pointer-events: none;
-          transition: opacity .3s;
+          background: rgba(0,0,0,0.82); backdrop-filter: blur(12px);
+          display: flex; align-items: flex-end; justify-content: center;
+          padding: 0; opacity: 0; pointer-events: none; transition: opacity .3s;
         }
         .ms-modal-bg.open { opacity: 1; pointer-events: all; }
+        @media (min-width: 600px) { .ms-modal-bg { align-items: center; padding: 1.5rem; } }
 
-        @media (min-width: 600px) {
-          .ms-modal-bg { align-items: center; padding: 1.5rem; }
-        }
-
-        /* ── MODAL ── */
         .ms-modal {
-          background: #1a1a1a;
-          border: 1px solid rgba(255,255,255,0.1);
-          width: 100%; max-width: 680px;
-          border-radius: 28px 28px 0 0;
-          max-height: 92vh; overflow-y: auto;
-          -webkit-overflow-scrolling: touch;
+          background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1);
+          width: 100%; max-width: 680px; border-radius: 28px 28px 0 0;
+          max-height: 92vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
           box-shadow: 0 -8px 60px rgba(0,0,0,0.5);
-          transform: translateY(60px);
-          transition: transform .38s cubic-bezier(.22,1,.36,1);
+          transform: translateY(60px); transition: transform .38s cubic-bezier(.22,1,.36,1);
         }
         .ms-modal-bg.open .ms-modal { transform: translateY(0); }
-
         @media (min-width: 600px) {
           .ms-modal { border-radius: 24px; transform: scale(0.9) translateY(24px); }
           .ms-modal-bg.open .ms-modal { transform: scale(1) translateY(0); }
         }
 
-        .ms-modal-handle {
-          width: 40px; height: 4px; border-radius: 2px;
-          background: rgba(255,255,255,0.15);
-          margin: 14px auto 0;
-        }
+        .ms-modal-handle { width: 40px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.15); margin: 14px auto 0; }
         @media (min-width: 600px) { .ms-modal-handle { display: none; } }
 
-        /* ── SLIDER ── */
         .ms-slider { margin: 1.2rem 1.5rem 0; }
-
-        .ms-slider-main {
-          position: relative;
-          border-radius: 16px;
-          overflow: hidden;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.08);
-          height: 320px;
-        }
+        .ms-slider-main { position: relative; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); height: 320px; }
         @media (max-width: 480px) { .ms-slider-main { height: 220px; } }
+        .ms-slider-img { width: 100%; height: 100%; object-fit: contain; display: block; background: rgba(0,0,0,0.2); }
+        .ms-slider-fallback { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.7rem; }
+        .ms-slider-fallback p { font-size: 0.8rem; color: rgba(255,255,255,0.3); font-weight: 500; }
 
-        .ms-slider-img {
-          width: 100%; height: 100%;
-          object-fit: contain;
-          display: block;
-          background: rgba(0,0,0,0.2);
-        }
-        .ms-slider-fallback {
-          width: 100%; height: 100%;
-          display: flex; flex-direction: column;
-          align-items: center; justify-content: center; gap: 0.7rem;
-        }
-        .ms-slider-fallback p {
-          font-size: 0.8rem; color: rgba(255,255,255,0.3); font-weight: 500;
-        }
-
-        /* arrow buttons */
-        .ms-arr {
-          position: absolute; top: 50%; transform: translateY(-50%);
-          width: 36px; height: 36px; border-radius: 50%;
-          background: rgba(0,0,0,0.45); backdrop-filter: blur(4px);
-          border: 1px solid rgba(255,255,255,0.15);
-          display: flex; align-items: center; justify-content: center;
-          cursor: pointer; transition: background .2s; z-index: 5;
-        }
+        .ms-arr { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s; z-index: 5; }
         .ms-arr:hover { background: rgba(0,0,0,0.7); }
-        .ms-arr-l { left: 10px; }
-        .ms-arr-r { right: 10px; }
-
-        /* dot indicators */
-        .ms-dots {
-          position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
-          display: flex; gap: 5px; z-index: 5;
-        }
-        .ms-dot {
-          width: 6px; height: 6px; border-radius: 50%;
-          background: rgba(255,255,255,0.3);
-          border: none; padding: 0; cursor: pointer;
-          transition: background .2s, transform .2s;
-        }
+        .ms-arr-l { left: 10px; } .ms-arr-r { right: 10px; }
+        .ms-dots { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; z-index: 5; }
+        .ms-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); border: none; padding: 0; cursor: pointer; transition: background .2s, transform .2s; }
         .ms-dot.active { background: #fff; transform: scale(1.3); }
 
-        /* X close on slider */
-        .ms-modal-x {
-          position: absolute; top: 10px; right: 10px; z-index: 10;
-          width: 32px; height: 32px; border-radius: 50%;
-          background: rgba(0,0,0,0.45); backdrop-filter: blur(4px);
-          border: 1px solid rgba(255,255,255,0.1);
-          display: flex; align-items: center; justify-content: center;
-          cursor: pointer; transition: background .2s;
-        }
+        .ms-modal-x { position: absolute; top: 10px; right: 10px; z-index: 10; width: 32px; height: 32px; border-radius: 50%; background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s; }
         .ms-modal-x:hover { background: rgba(0,0,0,0.7); }
         .ms-modal-x svg { display: block; }
 
-        /* thumbnail strip */
-        .ms-thumbs {
-          display: flex;
-          gap: 0.5rem;
-          margin-top: 0.6rem;
-          overflow-x: auto;
-          padding-bottom: 2px;
-          scrollbar-width: none;
-        }
+        .ms-thumbs { display: flex; gap: 0.5rem; margin-top: 0.6rem; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
         .ms-thumbs::-webkit-scrollbar { display: none; }
-        .ms-thumb-btn {
-          flex-shrink: 0;
-          width: 64px; height: 48px;
-          border-radius: 8px;
-          overflow: hidden;
-          border: 2px solid transparent;
-          padding: 0; cursor: pointer;
-          transition: border-color .2s, opacity .2s;
-          opacity: 0.5;
-          background: rgba(255,255,255,0.04);
-        }
+        .ms-thumb-btn { flex-shrink: 0; width: 64px; height: 48px; border-radius: 8px; overflow: hidden; border: 2px solid transparent; padding: 0; cursor: pointer; transition: border-color .2s, opacity .2s; opacity: 0.5; background: rgba(255,255,255,0.04); }
         .ms-thumb-btn.active { border-color: rgba(255,255,255,0.7); opacity: 1; }
         .ms-thumb-btn:hover { opacity: 0.85; }
         .ms-thumb-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .ms-thumb-fallback {
-          width: 100%; height: 100%;
-          display: flex; align-items: center; justify-content: center;
-        }
+        .ms-thumb-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
 
-        /* ── MODAL BODY ── */
         .ms-modal-body { padding: 1.4rem 1.5rem 2rem; }
-        .ms-modal-top {
-          display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.85rem;
-        }
-        .ms-modal-ico {
-          width: 48px; height: 48px; border-radius: 13px;
-          display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-        }
+        .ms-modal-top { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.85rem; }
+        .ms-modal-ico { width: 48px; height: 48px; border-radius: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .ms-modal-ico svg { width: 23px; height: 23px; }
         .ms-modal-title { font-size: 1.18rem; font-weight: 700; color: #fff; line-height: 1.25; }
-        .ms-modal-org   { font-size: 0.74rem; font-weight: 700; margin-top: 0.1rem; }
-        .ms-modal-meta  {
-          display: flex; gap: 0.5rem; margin-top: 0.25rem; flex-wrap: wrap;
-        }
-        .ms-modal-year {
-          font-size: 0.68rem; font-weight: 700;
-          color: rgba(255,255,255,0.35);
-        }
-        .ms-modal-cat {
-          font-size: 0.65rem; font-weight: 700;
-          padding: 0.18rem 0.55rem; border-radius: 999px;
-          border: 1px solid; text-transform: uppercase; letter-spacing: 0.07em;
-        }
-        .ms-modal-desc {
-          font-size: 0.9rem; color: rgba(255,255,255,0.52);
-          font-weight: 500; line-height: 1.8; margin-bottom: 1.4rem;
-        }
-        .ms-modal-img-count {
-          font-size: 0.72rem; font-weight: 700;
-          color: rgba(255,255,255,0.3); margin-bottom: 0.8rem;
-        }
-        .ms-modal-close {
-          width: 100%; padding: 0.72rem;
-          background: rgba(255,255,255,0.06);
-          border: 1.5px solid rgba(255,255,255,0.1);
-          border-radius: 12px;
-          font-family: 'Quicksand', sans-serif;
-          font-size: 0.85rem; font-weight: 700; color: rgba(255,255,255,0.65);
-          cursor: pointer; transition: background .2s;
-        }
+        .ms-modal-org { font-size: 0.74rem; font-weight: 700; margin-top: 0.1rem; }
+        .ms-modal-meta { display: flex; gap: 0.5rem; margin-top: 0.25rem; flex-wrap: wrap; }
+        .ms-modal-year { font-size: 0.68rem; font-weight: 700; color: rgba(255,255,255,0.35); }
+        .ms-modal-cat { font-size: 0.65rem; font-weight: 700; padding: 0.18rem 0.55rem; border-radius: 999px; border: 1px solid; text-transform: uppercase; letter-spacing: 0.07em; }
+        .ms-modal-desc { font-size: 0.9rem; color: rgba(255,255,255,0.52); font-weight: 500; line-height: 1.8; margin-bottom: 1.4rem; }
+        .ms-modal-img-count { font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.3); margin-bottom: 0.8rem; }
+        .ms-modal-close { width: 100%; padding: 0.72rem; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 12px; font-family: 'Quicksand', sans-serif; font-size: 0.85rem; font-weight: 700; color: rgba(255,255,255,0.65); cursor: pointer; transition: background .2s; }
         .ms-modal-close:hover { background: rgba(255,255,255,0.1); }
 
-        /* ── RESPONSIVE ── */
-        @media (max-width: 600px) {
-          .ms-grid { grid-template-columns: 1fr; }
-          .ms-modal-body { padding: 1.2rem 1.2rem 1.8rem; }
-          .ms-slider { margin: 1rem 1.2rem 0; }
-        }
         @media (max-width: 380px) {
           .ms-card-body { padding: 1.2rem 1.2rem 1rem; }
           .ms-card-thumbs { padding: 0 1.2rem 1.2rem; }
@@ -689,81 +533,134 @@ export default function Milestones() {
         <div className="sec-head">
           <p className="sec-tag">Journey</p>
           <h2 className="sec-h2 light">Milestones</h2>
-          <p className="sec-lead light">
-            Achievements, awards, and causes I've been part of along the way.
-          </p>
+          <p className="sec-lead light">Achievements, awards, and causes I've been part of along the way.</p>
         </div>
 
         {/* Filter tabs */}
         <div className="ms-filters" role="group" aria-label="Filter milestones by category">
-          {(["all", "achievement", "award", "volunteering"] as const).map((cat) => (
+          {(["all", "achievement", "award", "leadership"] as const).map((cat) => (
             <button
               key={cat}
               className={`ms-filter-btn${filter === cat ? " active" : ""}`}
               onClick={() => setFilter(cat)}
             >
-              {cat === "all" ? "All" : categoryLabel[cat] + "s"}
+              {cat === "all" ? "All" : categoryLabel[cat as MilestoneCategory] + "s"}
             </button>
           ))}
         </div>
 
-        {/* Grid */}
+        {/* ── DESKTOP GRID ── */}
         <div className="ms-grid">
-          {filtered.map((item, i) => {
-            const p = palette[item.colorClass];
-            return (
-              <div
-                key={i}
-                className="ms-card"
-                onClick={() => setSelected(item)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === "Enter" && setSelected(item)}
-                aria-label={`View details for ${item.title}`}
-              >
-                {/* Colored top bar */}
-                <div className="ms-card-bar" style={{ background: p.bar }} />
-
-                <div className="ms-card-body">
-                  {/* Top row: icon + badges */}
-                  <div className="ms-card-top">
-                    <div className="ms-card-ico" style={{ background: p.bg }}>
-                      <div style={{ color: p.icon }}>{item.icon}</div>
-                    </div>
-                    <div className="ms-card-badges">
-                      <span
-                        className="ms-card-cat"
-                        style={{ background: p.bg, color: p.icon, borderColor: p.border }}
-                      >
-                        {categoryLabel[item.category]}
-                      </span>
-                      <span className="ms-card-year">{item.year}</span>
-                    </div>
+          {filtered.map((item, i) => (
+            <div key={i} className="ms-card" onClick={() => setSelected(item)}
+              role="button" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && setSelected(item)}
+              aria-label={`View details for ${item.title}`}>
+              <div className="ms-card-bar" style={{ background: palette[item.colorClass].bar }} />
+              <div className="ms-card-body">
+                <div className="ms-card-top">
+                  <div className="ms-card-ico" style={{ background: palette[item.colorClass].bg }}>
+                    <div style={{ color: palette[item.colorClass].icon }}>{item.icon}</div>
                   </div>
-
-                  {/* Text */}
-                  <div>
-                    <p className="ms-card-title">{item.title}</p>
-                    <p className="ms-card-org" style={{ color: p.icon }}>{item.org}</p>
+                  <div className="ms-card-badges">
+                    <span className="ms-card-cat" style={{ background: palette[item.colorClass].bg, color: palette[item.colorClass].icon, borderColor: palette[item.colorClass].border }}>
+                      {categoryLabel[item.category]}
+                    </span>
+                    <span className="ms-card-year">{item.year}</span>
                   </div>
-                  <p className="ms-card-desc">{item.description}</p>
                 </div>
-
-                {/* Thumbnail strip */}
-                <CardThumbs images={item.images} colorBar={p.bar} />
-
-                {/* Hover overlay */}
-                <div className="ms-card-view-overlay">
-                  <span className="ms-card-view-pill">
-                    <svg viewBox="0 0 24 24" fill="none" stroke={p.icon} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="13" height="13">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-                    </svg>
-                    View Details
-                  </span>
+                <div>
+                  <p className="ms-card-title">{item.title}</p>
+                  <p className="ms-card-org" style={{ color: palette[item.colorClass].icon }}>{item.org}</p>
                 </div>
+                <p className="ms-card-desc">{item.description}</p>
               </div>
-            );
-          })}
+              <CardThumbs images={item.images} colorBar={palette[item.colorClass].bar} />
+              <div className="ms-card-view-overlay">
+                <span className="ms-card-view-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke={palette[item.colorClass].icon} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="13" height="13">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  View Details
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── MOBILE CAROUSEL ── */}
+        <div className="ms-mobile-wrap">
+          <div className="ms-swipe-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+            Swipe to browse
+          </div>
+
+          <div className="ms-carousel" ref={carouselRef}>
+            {filtered.map((item, i) => {
+              const p = palette[item.colorClass];
+              return (
+                <div key={i} className="ms-card ms-carousel-card" onClick={() => setSelected(item)}
+                  role="button" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && setSelected(item)}>
+                  <div className="ms-card-bar" style={{ background: p.bar }} />
+                  <div className="ms-card-body">
+                    <div className="ms-card-top">
+                      <div className="ms-card-ico" style={{ background: p.bg }}>
+                        <div style={{ color: p.icon }}>{item.icon}</div>
+                      </div>
+                      <div className="ms-card-badges">
+                        <span className="ms-card-cat" style={{ background: p.bg, color: p.icon, borderColor: p.border }}>
+                          {categoryLabel[item.category]}
+                        </span>
+                        <span className="ms-card-year">{item.year}</span>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="ms-card-title">{item.title}</p>
+                      <p className="ms-card-org" style={{ color: p.icon }}>{item.org}</p>
+                    </div>
+                    <p className="ms-card-desc ms-card-desc-compact">{item.description}</p>
+                  </div>
+                  <CardThumbs images={item.images} colorBar={p.bar} />
+                  <div className="ms-card-view-overlay">
+                    <span className="ms-card-view-pill">
+                      <svg viewBox="0 0 24 24" fill="none" stroke={p.icon} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="13" height="13">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                      </svg>
+                      View Details
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Footer: counter + pill dots + arrows */}
+          <div className="ms-carousel-footer">
+            <span className="ms-carousel-counter">{carouselIdx + 1} / {filtered.length}</span>
+
+            <div className="ms-carousel-dots">
+              {filtered.map((_, i) => (
+                <button key={i} className={`ms-carousel-dot${i === carouselIdx ? " active" : ""}`}
+                  onClick={() => setCarouselIdx(i)} aria-label={`Go to card ${i + 1}`} />
+              ))}
+            </div>
+
+            <div className="ms-carousel-arrows">
+              <button className="ms-carousel-arr" disabled={carouselIdx === 0}
+                onClick={() => setCarouselIdx((i) => Math.max(0, i - 1))} aria-label="Previous">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+                  <polyline points="15 18 9 12 15 6"/>
+                </svg>
+              </button>
+              <button className="ms-carousel-arr" disabled={carouselIdx === filtered.length - 1}
+                onClick={() => setCarouselIdx((i) => Math.min(filtered.length - 1, i + 1))} aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -771,41 +668,27 @@ export default function Milestones() {
       <div
         className={`ms-modal-bg${selected ? " open" : ""}`}
         onClick={() => setSelected(null)}
-        role="dialog"
-        aria-modal="true"
-        aria-label={selected?.title}
+        role="dialog" aria-modal="true" aria-label={selected?.title}
       >
         {selected && (() => {
           const p = palette[selected.colorClass];
           return (
-            <div
-              className="ms-modal"
-              ref={modalRef}
-              onClick={(e) => e.stopPropagation()}
-            >
+            <div className="ms-modal" ref={modalRef} onClick={(e) => e.stopPropagation()}>
               <div className="ms-modal-handle" />
-
-              {/* Image slider + close button */}
               <div style={{ position: "relative" }}>
                 <ImageSlider images={selected.images} title={selected.title} />
-                <button
-                  className="ms-modal-x"
+                <button className="ms-modal-x"
                   style={{ top: "calc(1.2rem + 10px)", right: "calc(1.5rem + 10px)" }}
-                  onClick={() => setSelected(null)}
-                  aria-label="Close modal"
-                >
+                  onClick={() => setSelected(null)} aria-label="Close modal">
                   <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
                     <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
                   </svg>
                 </button>
               </div>
-
-              {/* Info */}
               <div className="ms-modal-body">
                 {selected.images.length > 1 && (
                   <p className="ms-modal-img-count">{selected.images.length} images — use arrows or thumbnails to browse</p>
                 )}
-
                 <div className="ms-modal-top">
                   <div className="ms-modal-ico" style={{ background: p.bg }}>
                     <div style={{ color: p.icon }}>{selected.icon}</div>
@@ -815,21 +698,14 @@ export default function Milestones() {
                     <div className="ms-modal-org" style={{ color: p.icon }}>{selected.org}</div>
                     <div className="ms-modal-meta">
                       <span className="ms-modal-year">{selected.year}</span>
-                      <span
-                        className="ms-modal-cat"
-                        style={{ background: p.bg, color: p.icon, borderColor: p.border }}
-                      >
+                      <span className="ms-modal-cat" style={{ background: p.bg, color: p.icon, borderColor: p.border }}>
                         {categoryLabel[selected.category]}
                       </span>
                     </div>
                   </div>
                 </div>
-
                 <p className="ms-modal-desc">{selected.description}</p>
-
-                <button className="ms-modal-close" onClick={() => setSelected(null)}>
-                  Close
-                </button>
+                <button className="ms-modal-close" onClick={() => setSelected(null)}>Close</button>
               </div>
             </div>
           );
