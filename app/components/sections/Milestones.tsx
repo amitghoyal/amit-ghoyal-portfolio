@@ -223,33 +223,52 @@ export default function Milestones() {
   const [carouselIdx, setCarouselIdx] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
+  // ── FIX: flag to prevent the scroll listener fighting programmatic scrollTo ──
+  const isScrollingByCode = useRef(false);
 
   const filtered = filter === "all" ? milestones : milestones.filter((m) => m.category === filter);
 
   // Reset carousel index when filter changes
   useEffect(() => { setCarouselIdx(0); }, [filter]);
 
-  // Sync carousel scroll position to carouselIdx
+  // ── FIX: Sync carousel scroll position to carouselIdx (arrows / dot clicks)
+  // Guard with isScrollingByCode so the scroll listener ignores our own scrollTo.
   useEffect(() => {
     const el = carouselRef.current;
     if (!el) return;
     const card = el.querySelector(".ms-carousel-card") as HTMLElement;
     if (!card) return;
-    const cardW = card.offsetWidth + 16; // gap = 16px
+
+    isScrollingByCode.current = true;
+
+    const elStyle = getComputedStyle(el);
+    const gap = parseFloat(elStyle.columnGap || elStyle.gap || "16") || 16;
+    const cardW = card.getBoundingClientRect().width + gap;
+
     el.scrollTo({ left: carouselIdx * cardW, behavior: "smooth" });
+
+    // Release the flag after the smooth scroll animation finishes (~450 ms)
+    const t = setTimeout(() => { isScrollingByCode.current = false; }, 500);
+    return () => clearTimeout(t);
   }, [carouselIdx]);
 
-  // Track scroll position → update dot
+  // ── FIX: Track native finger-scroll → update dot / counter
+  // Skip when we triggered the scroll ourselves to avoid a feedback loop.
   useEffect(() => {
     const el = carouselRef.current;
     if (!el) return;
+
     const onScroll = () => {
+      if (isScrollingByCode.current) return;          // ignore our own scrollTo
       const card = el.querySelector(".ms-carousel-card") as HTMLElement;
       if (!card) return;
-      const cardW = card.offsetWidth + 16;
+      const elStyle = getComputedStyle(el);
+      const gap = parseFloat(elStyle.columnGap || elStyle.gap || "16") || 16;
+      const cardW = card.getBoundingClientRect().width + gap;
       const idx = Math.round(el.scrollLeft / cardW);
-      setCarouselIdx(Math.min(idx, filtered.length - 1));
+      setCarouselIdx(Math.min(Math.max(idx, 0), filtered.length - 1));
     };
+
     el.addEventListener("scroll", onScroll, { passive: true });
     return () => el.removeEventListener("scroll", onScroll);
   }, [filtered.length]);
@@ -264,42 +283,6 @@ export default function Milestones() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
-
-  const CardContent = ({ item, compact = false }: { item: Milestone; compact?: boolean }) => {
-    const p = palette[item.colorClass];
-    return (
-      <>
-        <div className="ms-card-bar" style={{ background: p.bar }} />
-        <div className="ms-card-body">
-          <div className="ms-card-top">
-            <div className="ms-card-ico" style={{ background: p.bg }}>
-              <div style={{ color: p.icon }}>{item.icon}</div>
-            </div>
-            <div className="ms-card-badges">
-              <span className="ms-card-cat" style={{ background: p.bg, color: p.icon, borderColor: p.border }}>
-                {categoryLabel[item.category]}
-              </span>
-              <span className="ms-card-year">{item.year}</span>
-            </div>
-          </div>
-          <div>
-            <p className="ms-card-title">{item.title}</p>
-            <p className="ms-card-org" style={{ color: p.icon }}>{item.org}</p>
-          </div>
-          <p className={`ms-card-desc${compact ? " ms-card-desc-compact" : ""}`}>{item.description}</p>
-        </div>
-        <CardThumbs images={item.images} colorBar={p.bar} />
-        <div className="ms-card-view-overlay">
-          <span className="ms-card-view-pill">
-            <svg viewBox="0 0 24 24" fill="none" stroke={p.icon} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="13" height="13">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-            </svg>
-            View Details
-          </span>
-        </div>
-      </>
-    );
-  };
 
   return (
     <section className="section section-dark" id="milestones">
@@ -340,8 +323,9 @@ export default function Milestones() {
           -webkit-overflow-scrolling: touch;
           scrollbar-width: none;
           padding: 0.5rem 0 1rem;
-          /* peek next card on the right */
           padding-right: 2rem;
+          /* FIX: ensure scroll-snap works well with peek */
+          scroll-padding-left: 0;
         }
         .ms-carousel::-webkit-scrollbar { display: none; }
 
@@ -392,7 +376,7 @@ export default function Milestones() {
         .ms-carousel-arr:disabled { opacity: 0.25; cursor: default; }
         .ms-carousel-arr svg { display: block; }
 
-        /* ── SWIPE HINT (first visit only) ── */
+        /* ── SWIPE HINT ── */
         .ms-swipe-hint {
           display: flex; align-items: center; gap: 0.4rem;
           font-size: 0.7rem; font-weight: 600;
