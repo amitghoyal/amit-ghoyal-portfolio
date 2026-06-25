@@ -3,46 +3,82 @@ import { useState } from "react";
 
 const projects = [
   {
+    title: "SwasthyaBuddy",
+    subtitle: "PCOS/PCOD Prediction & Wellness Companion",
+    category: "ml",
+    categoryLabel: "ML + Full-Stack",
+    wip: true,
+    image: "/projects/swasthyabuddy.png",
+    accent: "#C9184A",
+    gradientFrom: "#FFCCD5",
+    gradientTo: "#FF85A1",
+    description:
+      "An AI-powered health companion for women with PCOS/PCOD. Predicts risk using a trained ML model, recommends personalized lifestyle changes, and helps users find nearby hospitals — all through a clean, empathetic interface built for accessibility.",
+    tags: ["Python", "Flask", "Scikit-learn", "MySQL", "Google Maps API", "Bootstrap"],
+    liveUrl: "",
+    githubUrl: "https://github.com/amitghoyal",
+    highlights: [
+      "ML-based PCOS/PCOD risk prediction (symptom & health data input)",
+      "Personalized lifestyle & diet recommendations based on severity",
+      "Nearby hospital & gynecologist finder via Google Maps API",
+      "User health dashboard to track symptoms over time",
+      "Role-based auth — Patient & Doctor views",
+      "Responsive, mobile-first design with accessibility in mind",
+    ],
+    techDetails:
+      "Python + Flask backend serving a Scikit-learn classification model trained on PCOS health datasets. MySQL stores user profiles and symptom history. Google Maps API powers the nearby hospital search. Bootstrap frontend with a patient-first UX focused on clarity and empathy. Currently in active development.",
+  },
+  {
     title: "MittiSafar",
-    subtitle: "Rural Tourism & Employment Platform",
+    subtitle: "Rural Tourism & Experience Booking Platform",
     category: "fullstack",
     categoryLabel: "Full-Stack",
-    image: "/projects/mittisafar.png",   // place your image here
+    image: "/projects/mittisafar.png",
     accent: "#2D6A4F",
     gradientFrom: "#B7E4C7",
     gradientTo: "#74C69D",
     description:
-      "Connects travelers with rural hosts via OTP-secured booking, host registration, and integrated payments. Built to bridge the urban–rural gap and generate sustainable local employment.",
-    tags: ["PHP", "MySQL", "Bootstrap"],
+      "A full-stack platform promoting rural tourism and authentic village-based experiences across India. Connects travelers with rural hosts via OTP-secured registration, service listings, Razorpay payments, and role-based dashboards for travelers, hosts, and admins.",
+    tags: ["PHP", "MySQL", "Bootstrap", "Razorpay", "PHPMailer", "JavaScript"],
     liveUrl: "",
-    githubUrl: "https://github.com/",
+    githubUrl: "https://github.com/amitghoyal/mittisafar-platform",
     highlights: [
-      "OTP-secured booking flow",
-      "Host registration & approval system",
-      "Payment integration",
-      "Responsive across all devices",
+      "Role-based auth — Traveler, Host & Admin dashboards",
+      "OTP email verification via PHPMailer",
+      "Razorpay payment integration (dummy mode)",
+      "Host service creation with image uploads & availability",
+      "Admin approval/rejection of host-listed services",
+      "Automated booking confirmation emails",
+      "Secure sessions & password reset flow",
+      "MySQL with JSON fields for dynamic content management",
     ],
+    techDetails:
+      "Backend in PHP with role-based session handling. MySQL database with a JSON-field-driven About Us page. PHPMailer handles OTP flows and booking confirmations. Razorpay integrated for dummy payments. Hosted locally via XAMPP.",
   },
   {
     title: "Aakar Creatives",
-    subtitle: "Online Gifting Website",
-    category: "web",
-    categoryLabel: "Web Dev",
+    subtitle: "Custom Gifting & Product Catalog Website",
+    category: "fullstack",
+    categoryLabel: "Full-Stack",
     image: "/projects/aakar.png",
     accent: "#9D4EDD",
     gradientFrom: "#E0AAFF",
     gradientTo: "#C77DFF",
     description:
-      "Responsive product catalog and inquiry system for a customized-gifting business. Features category filtering, product detail pages, and a WhatsApp inquiry flow.",
-    tags: ["PHP", "HTML/CSS", "Bootstrap"],
-    liveUrl: "",
-    githubUrl: "https://github.com/",
+      "A responsive product catalog and inquiry system for a customized-gifting business. Features category filtering, product detail pages, a PHP/MySQL-powered admin panel to manage products, and a WhatsApp inquiry flow for direct customer engagement.",
+    tags: ["PHP", "MySQL", "Bootstrap", "JavaScript", "HTML/CSS"],
+    liveUrl: "https://aakar-creatives.infinityfree.me",
+    githubUrl: "https://github.com/amitghoyal",
     highlights: [
-      "Category filter & search",
-      "Product detail pages",
-      "WhatsApp inquiry flow",
-      "Mobile-first design",
+      "Category filter & live product search",
+      "Individual product detail pages",
+      "WhatsApp-powered inquiry flow",
+      "PHP/MySQL admin panel for product management",
+      "Mobile-first responsive design",
+      "Deployed on InfinityFree hosting",
     ],
+    techDetails:
+      "PHP backend with a MySQL database for product and category management. Bootstrap 5 for a fully responsive, mobile-first layout. Admin panel to add/edit/delete products without touching code. Deployed and live on InfinityFree at aakar-creatives.infinityfree.me.",
   },
   {
     title: "Personal Portfolio",
@@ -54,16 +90,19 @@ const projects = [
     gradientFrom: "#C2EAD9",
     gradientTo: "#A8E6CF",
     description:
-      "Custom-built responsive portfolio featuring project gallery, scroll animations, dark-section contrast, and a working contact form.",
-    tags: ["HTML", "CSS", "JavaScript"],
+      "A custom-built responsive developer portfolio featuring a project gallery with filters, scroll-reveal animations, dark-section contrast, and a working contact form — served via a Node.js backend.",
+    tags: ["Node.js", "HTML", "CSS", "JavaScript"],
     liveUrl: "",
-    githubUrl: "https://github.com/",
+    githubUrl: "https://github.com/amitghoyal",
     highlights: [
-      "Scroll-reveal animations",
-      "Project gallery with filters",
-      "Working contact form",
-      "Fully responsive",
+      "Node.js server with Express for backend routing",
+      "Scroll-reveal animations on page load",
+      "Project gallery with category filters",
+      "Working contact form with server-side handling",
+      "Fully responsive across all screen sizes",
     ],
+    techDetails:
+      "Node.js + Express serves the portfolio as a static site with a lightweight backend for contact form submissions. Pure HTML/CSS/JS on the frontend with custom scroll animations and no external UI frameworks.",
   },
 ];
 
@@ -71,8 +110,9 @@ type Filter = "all" | "fullstack" | "web" | "ml";
 
 const filters: { label: string; value: Filter }[] = [
   { label: "All Projects", value: "all" },
-  { label: "Web Dev", value: "web" },
+  { label: "ML + AI", value: "ml" },
   { label: "Full-Stack", value: "fullstack" },
+  { label: "Web Dev", value: "web" },
 ];
 
 export default function Projects() {
@@ -162,6 +202,40 @@ export default function Projects() {
           padding: 0.2rem 0.65rem;
           font-size: 0.68rem; font-weight: 700; color: var(--ink);
           box-shadow: var(--shadow-xs);
+        }
+
+        .proj-wip-pill {
+          position: absolute; top: 12px; right: 12px; z-index: 2;
+          background: #FFF0F3;
+          border: 1.5px solid #FF85A1;
+          border-radius: var(--pill-radius);
+          padding: 0.2rem 0.65rem;
+          font-size: 0.65rem; font-weight: 700; color: #C9184A;
+          display: flex; align-items: center; gap: 0.3rem;
+          box-shadow: var(--shadow-xs);
+        }
+        .proj-wip-dot {
+          width: 6px; height: 6px; border-radius: 50%;
+          background: #C9184A;
+          animation: wipPulse 1.4s ease-in-out infinite;
+          flex-shrink: 0;
+        }
+        @keyframes wipPulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        .pmodal-wip-banner {
+          display: flex; align-items: center; gap: 0.5rem;
+          background: #FFF0F3; border: 1px solid #FFCCD5;
+          border-radius: 10px; padding: 0.6rem 1rem;
+          font-size: 0.8rem; font-weight: 600; color: #C9184A;
+          margin-bottom: 1.2rem;
+        }
+        .pmodal-wip-banner-dot {
+          width: 8px; height: 8px; border-radius: 50%;
+          background: #C9184A; flex-shrink: 0;
+          animation: wipPulse 1.4s ease-in-out infinite;
         }
 
         .proj-overlay {
@@ -274,6 +348,16 @@ export default function Projects() {
           background: var(--teal); flex-shrink: 0;
         }
 
+        .pmodal-tech-note {
+          background: var(--bg);
+          border-left: 3px solid var(--teal);
+          border-radius: 0 8px 8px 0;
+          padding: 0.85rem 1rem;
+          font-size: 0.82rem; color: var(--ink-muted); font-weight: 500;
+          line-height: 1.7;
+          margin-bottom: 1.5rem;
+        }
+
         .pmodal-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.8rem; }
         .pmodal-tag {
           background: var(--teal-pale); border: 1px solid var(--teal-mid);
@@ -301,7 +385,7 @@ export default function Projects() {
             <p className="sec-lead">Click any card to view full details.</p>
           </div>
           <a
-            href="https://github.com/"
+            href="https://github.com/amitghoyal"
             className="view-all"
             target="_blank"
             rel="noopener noreferrer"
@@ -355,6 +439,13 @@ export default function Projects() {
                   </div>
 
                   <span className="proj-cat-pill">{p.categoryLabel}</span>
+
+                  {p.wip && (
+                    <span className="proj-wip-pill">
+                      <span className="proj-wip-dot" />
+                      In Progress
+                    </span>
+                  )}
 
                   <div className="proj-overlay">
                     <span className="proj-view-btn">
@@ -420,6 +511,12 @@ export default function Projects() {
               <div className="pmodal-cat">{selected.categoryLabel}</div>
               <div className="pmodal-title">{selected.title}</div>
               <div className="pmodal-sub">{selected.subtitle}</div>
+              {selected.wip && (
+                <div className="pmodal-wip-banner">
+                  <span className="pmodal-wip-banner-dot" />
+                  Currently in active development — features and scope may expand.
+                </div>
+              )}
               <p className="pmodal-desc">{selected.description}</p>
 
               <div className="pmodal-section-label">Key Features</div>
@@ -431,6 +528,9 @@ export default function Projects() {
                   </div>
                 ))}
               </div>
+
+              <div className="pmodal-section-label">Under the Hood</div>
+              <div className="pmodal-tech-note">{selected.techDetails}</div>
 
               <div className="pmodal-section-label">Tech Stack</div>
               <div className="pmodal-tags">

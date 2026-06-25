@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 
-type MilestoneCategory = "achievement" | "award" | "volunteering";
+type MilestoneCategory = "achievement" | "award" | "volunteering" | "leadership";
 
 type Milestone = {
   icon: React.ReactNode;
@@ -26,7 +26,7 @@ const milestones: Milestone[] = [
       </svg>
     ),
     colorClass: "gold",
-    category: "achievement",
+    category: "leadership",
     title: "Best Leader Award",
     org: "Trendsetters Marketing Club",
     year: "2025",
@@ -35,6 +35,7 @@ const milestones: Milestone[] = [
     images: [
       "/milestones/best-leader-certificate.jpg",
       "/milestones/best-leader-trophy.jpg",
+      "/milestones/best-leader-award-photo.jpg",
     ],
   },
   {
@@ -73,66 +74,68 @@ const milestones: Milestone[] = [
     description:
       "Won 1st Prize for creative writing and content strategy in the inter-college blogging competition.",
     images: [
-      "/milestones/bloggers-certificate.jpg",
-      "/milestones/bloggers-trophy.jpg",
-      "/milestones/bloggers-team.jpg",
+      "/milestones/bloggers-certificate.jpeg",
+      "/milestones/bloggers-trophy.jpeg",
+      "/milestones/bloggers-team.jpeg",
     ],
   },
+{
+  icon: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="8" r="6"/>
+      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+    </svg>
+  ),
+  colorClass: "rose",
+  category: "award",
+  title: "Advertisement Competition — Runner-Up",
+  org: "Antarang 2K24, C.K. Pithawala College Campus",
+  year: "2024",
+  description:
+    "Awarded Runner-Up in the VIGYAPTI Advertisement Making Competition during Antarang 2K24 for developing an innovative and impactful advertising campaign. Collaborated with the team to create compelling concepts, strategic messaging, and engaging presentations, showcasing creativity, communication, teamwork, and marketing skills in a competitive inter-college environment.",
+  images: [
+    "/milestones/advertisement-certificate.png",
+  ],
+},
+{
+  icon: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
+    </svg>
+  ),
+  colorClass: "gold",
+  category: "award",
+  title: "Group Dance Competition — Winner",
+  org: "Antarang 2K24, C.K. Pithawala College Campus",
+  year: "2024",
+  description:
+    "Won the THIRAK Group Dance Competition at Antarang 2K24 as a member of the college dance team. Delivered a synchronized and energetic performance through dedicated practice, coordination, and teamwork, demonstrating discipline, collaboration, confidence, and stage presence while representing the college in the annual cultural festival.",
+  images: [
+    "/milestones/dance-certificate.png",
+    "/milestones/dance-team.jpg",
+    "/milestones/solo.jpeg",
+  ],
+},
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
-      </svg>
-    ),
-    colorClass: "rose",
-    category: "award",
-    title: "Advertisement Competition — 1st Runner-Up",
-    org: "Inter-College Competition",
-    year: "2024",
-    description:
-      "Achieved 1st Runner-Up in the Advertisement Making Competition, showcasing creativity and strategic communication.",
-    images: [
-      "/milestones/advertisement-certificate.jpg",
-      "/milestones/advertisement-trophy.jpg",
-    ],
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
-      </svg>
-    ),
-    colorClass: "gold",
-    category: "award",
-    title: "Group Dance Competition — 1st Prize",
-    org: "College Annual Function",
-    year: "2024",
-    description:
-      "Secured 1st position as part of the college team, representing creativity and coordination.",
-    images: [
-      "/milestones/dance-trophy.jpg",
-      "/milestones/dance-team.jpg",
-    ],
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-      </svg>
-    ),
-    colorClass: "violet",
-    category: "volunteering",
-    title: "NSS Volunteer & Camp Coordinator",
-    org: "National Service Scheme",
-    year: "2023–25",
-    description:
-      "Actively volunteered in community drives, blood donation camps, and environmental awareness programs over two academic years.",
-    images: [
-      "/milestones/nss-camp.jpg",
-      "/milestones/nss-certificate.jpg",
-    ],
-  },
+  icon: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2l3 6 6 .9-4.5 4.4L17.5 20 12 17l-5.5 3 1-6.7L3 8.9 9 8z"/>
+    </svg>
+  ),
+  colorClass: "gold",
+  category: "leadership",
+  title: "Event Coordinator Appreciation",
+  org: "Antarang 2K24 – C.K. Pithawala College Campus",
+  year: "2024",
+  description:
+    "Received a Certificate of Appreciation for serving as the Coordinator of the VIGYAPTI – Advertisement Making Competition during Antarang 2K24. Successfully coordinated event planning, participant management, and smooth execution, demonstrating leadership, teamwork, and organizational skills.",
+  images: [
+    "/milestones/coordinator-certificate.png",
+  ],
+},
+
 ];
 
 // ─── PALETTE ──────────────────────────────────────────────────────────────────
@@ -149,6 +152,7 @@ const categoryLabel: Record<MilestoneCategory, string> = {
   achievement: "Achievement",
   award: "Award",
   volunteering: "Volunteering",
+  leadership: "Leadership",
 };
 
 // ─── IMAGE SLIDER (inside modal) ─────────────────────────────────────────────

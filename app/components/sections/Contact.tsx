@@ -205,7 +205,7 @@ export default function Contact() {
 
               <a
                 className="soc-btn"
-                href="https://github.com/YOUR_USERNAME"
+                href="https://github.com/amitghoyal"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -222,7 +222,6 @@ export default function Contact() {
               >
                 <FaLinkedin size={18} />
               </a>
-
               <a
                 className="soc-btn"
                 href="mailto:amittghoyal@gmail.com"
