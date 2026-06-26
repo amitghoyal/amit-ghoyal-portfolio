@@ -3,11 +3,11 @@ import { useState, useEffect, useRef } from "react";
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 
-type MilestoneCategory = "achievement" | "award" | "volunteering" | "leadership";
+type MilestoneCategory = "achievement" | "award" | "volunteering" | "leadership" | "participation";
 
 type Milestone = {
   icon: React.ReactNode;
-  colorClass: "teal" | "gold" | "indigo" | "rose" | "violet";
+  colorClass: "teal" | "gold" | "indigo" | "rose" | "violet" | "blue" | "green";
   category: MilestoneCategory;
   title: string;
   org: string;
@@ -16,15 +16,86 @@ type Milestone = {
   images: string[];
 };
 
+// ─── SVG ICONS ───────────────────────────────────────────────────────────────
+
+const IconStar = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+  </svg>
+);
+const IconGrad = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+  </svg>
+);
+const IconTrophy = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+    <path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+    <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/>
+  </svg>
+);
+const IconMedal = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="8" r="6"/>
+    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+  </svg>
+);
+const IconMusic = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 18V5l12-2v13"/>
+    <circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+  </svg>
+);
+const IconBadge = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2l3 6 6 .9-4.5 4.4L17.5 20 12 17l-5.5 3 1-6.7L3 8.9 9 8z"/>
+  </svg>
+);
+const IconBulb = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.5-1.3 4.7-3.3 6H8.3A7 7 0 0 1 5 9a7 7 0 0 1 7-7z"/>
+  </svg>
+);
+const IconMic = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+    <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
+  </svg>
+);
+const IconAtom = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="1"/>
+    <path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9C11.17 3.76 5.84 1.74 3.8 3.8c-2.04 2.03-.02 7.36 4.5 11.9 4.51 4.51 9.84 6.53 11.9 4.5z"/>
+    <path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.51 4.51-6.53 9.84-4.5 11.9 2.04 2.04 7.37.02 11.9-4.5z"/>
+  </svg>
+);
+const IconCode = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+  </svg>
+);
+const IconHeart = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+  </svg>
+);
+const IconScroll = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+    <polyline points="10 9 9 9 8 9"/>
+  </svg>
+);
+
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
 const milestones: Milestone[] = [
+  // ── EXISTING ──────────────────────────────────────────────────────────────
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-      </svg>
-    ),
+    icon: <IconStar />,
     colorClass: "gold",
     category: "leadership",
     title: "Best Leader Award",
@@ -34,11 +105,7 @@ const milestones: Milestone[] = [
     images: ["/milestones/best-leader-certificate.jpg", "/milestones/best-leader-trophy.jpg", "/milestones/best-leader-award-photo.jpg"],
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
-      </svg>
-    ),
+    icon: <IconGrad />,
     colorClass: "teal",
     category: "achievement",
     title: "Academic Excellence Award",
@@ -48,66 +115,124 @@ const milestones: Milestone[] = [
     images: ["/milestones/academic-excellence-sem-3.jpg", "/milestones/academic-excellence-sem-4.jpg", "/milestones/academic-excellence-sem-5.jpg"],
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
-        <path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
-        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
-        <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/>
-      </svg>
-    ),
+    icon: <IconTrophy />,
     colorClass: "indigo",
     category: "award",
     title: "Bloggers Paradise — 1st Prize",
     org: "Inter-College Blogging Competition",
     year: "2024",
     description: "Won 1st Prize for creative writing and content strategy in the inter-college blogging competition.",
-    images: ["/milestones/bloggers-certificate.jpeg", "/milestones/bloggers-trophy.jpeg", "/milestones/bloggers-team.jpeg"],
+    images: ["/milestones/bloggers-certificate.jpg", "/milestones/bloggers-trophy.jpg", "/milestones/bloggers-team.jpg"],
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="8" r="6"/>
-        <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
-      </svg>
-    ),
+    icon: <IconMedal />,
     colorClass: "rose",
     category: "award",
     title: "Advertisement Competition — Runner-Up",
-    org: "Antarang 2K24, C.K. Pithawala College",
+    org: "Antarang 2K24, C.K. Pithawalla College",
     year: "2024",
     description: "Awarded Runner-Up in the VIGYAPTI Advertisement Making Competition at Antarang 2K24 for developing an innovative and impactful advertising campaign.",
     images: ["/milestones/advertisement-certificate.png"],
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9 18V5l12-2v13"/>
-        <circle cx="6" cy="18" r="3"/>
-        <circle cx="18" cy="16" r="3"/>
-      </svg>
-    ),
+    icon: <IconMusic />,
     colorClass: "gold",
     category: "award",
     title: "Group Dance Competition — Winner",
-    org: "Antarang 2K24, C.K. Pithawala College",
+    org: "Antarang 2K24, C.K. Pithawalla College",
     year: "2024",
     description: "Won the THIRAK Group Dance Competition at Antarang 2K24. Delivered a synchronized performance through dedicated practice, coordination, and teamwork.",
     images: ["/milestones/dance-certificate.png", "/milestones/dance-team.jpg", "/milestones/solo.jpeg"],
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2l3 6 6 .9-4.5 4.4L17.5 20 12 17l-5.5 3 1-6.7L3 8.9 9 8z"/>
-      </svg>
-    ),
+    icon: <IconBadge />,
     colorClass: "gold",
     category: "leadership",
     title: "Event Coordinator Appreciation",
-    org: "Antarang 2K24 – C.K. Pithawala College",
+    org: "Antarang 2K24 – C.K. Pithawalla College",
     year: "2024",
     description: "Received a Certificate of Appreciation for serving as Coordinator of VIGYAPTI – Advertisement Making Competition during Antarang 2K24.",
-    images: ["/milestones/coordinator-certificate.png"],
+    images: ["/milestones/coordinator-certificate.png",],
+  },
+  {
+    icon: <IconTrophy />,
+    colorClass: "rose",
+    category: "award",
+    title: "Marketing Mavericks — 1st Position",
+    org: "Praayudh 2024 — D.C. Patel Navnirman Campus, Surat",
+    year: "2024",
+    description: "Awarded Certificate of Achievement for securing 1st position in the Marketing Mavericks event at PRAAYUDH-2024, an inter-college business fest held on 27th January 2024 at D.R. Patel & R.B. Patel Commerce College, Surat.",
+    images: ["/milestones/praayudh-certificate.jpg","/milestones/praayudh-trophy.jpg"],
+  },
+  {
+    icon: <IconBulb />,
+    colorClass: "indigo",
+    category: "award",
+    title: "Idea Ignition Contest — 2nd Rank",
+    org: "Spark-2025, Vivekanand College of BCA, BBA & Commerce, Surat",
+    year: "2025",
+    description: "Secured 2nd rank in the Idea Ignition Contest at Spark-2025, an inter-collegiate fest organized by Vivekanand College, demonstrating innovative thinking and entrepreneurial ideation.",
+    images: ["/milestones/idea-ignition-certificate.jpg"],
+  },
+  {
+    icon: <IconGrad />,
+    colorClass: "teal",
+    category: "achievement",
+    title: "BCA — First Class with Distinction",
+    org: "Veer Narmad South Gujarat University, Surat",
+    year: "2025",
+    description: "Conferred the degree of Bachelor of Computer Application in First Class with Distinction by Veer Narmad South Gujarat University in February 2025, from C.K. Pithawalla College of Commerce, Management & Computer Application.",
+    images: ["/milestones/bca-degree.jpeg"],
+  },
+  {
+    icon: <IconCode />,
+    colorClass: "blue",
+    category: "participation",
+    title: "scriptIT — mindIT Inter-College Skills Fest",
+    org: "Sutex Bank College of Computer Applications & Science, Surat",
+    year: "2024",
+    description: "Participated in scriptIT, a coding event at mindIT — the inter-college skills fest organized by Sutex Bank College of Computer Applications and Science on 24th January 2024.",
+    images: ["/milestones/mindit-certificate.jpg"],
+  },
+  {
+    icon: <IconCode />,
+    colorClass: "blue",
+    category: "participation",
+    title: "DevOps Mastery Workshop",
+    org: "Techify × GLS University, Ahmedabad",
+    year: "2026",
+    description: "Successfully participated in the DevOps Mastery workshop held on 27th February 2026, organized by Techify in association with GLS University. Demonstrated strong engagement in modern DevOps practices and CI/CD workflows.",
+    images: ["/milestones/devops-certificate.jpg"],
+  },
+  {
+    icon: <IconHeart />,
+    colorClass: "violet",
+    category: "volunteering",
+    title: "Volunteer — Sankalan 2025",
+    org: "C.K. Pithawalla College of Commerce, Management & Computer Application",
+    year: "2025",
+    description: "Received Certificate of Appreciation for volunteering at Sankalan 2025, an inter-collegiate event organized by C.K. Pithawalla College on 8th January 2025. Recognized for hard work and dedication.",
+    images: ["/milestones/sankalan-volunteer-certificate.jpg"],
+  },
+  {
+    icon: <IconMic />,
+    colorClass: "green",
+    category: "achievement",
+    title: "Udghoshak — School Enrollment Drive 2017",
+    org: "Nagar Prathmik Shikshan Samiti, Surat",
+    year: "2017",
+    description: "Honoured with an Abhinandanpatra for playing the role of Udghoshak (Anchor/Announcer) at Shala Praveshotsav 2017, successfully guiding and energizing the school enrollment ceremony organized by Nagar Prathmik Shikshan Samiti, Surat.",
+    images: ["/milestones/praveshotsav-certificate.jpg"],
+  },
+  {
+    icon: <IconAtom />,
+    colorClass: "green",
+    category: "achievement",
+    title: "CRC Science & Math Exhibition 2017",
+    org: "Nagar Prathmik Shikshan Samiti × GCERT, Surat",
+    year: "2017",
+    description: "Awarded Pramanpatra for participating in the CRC Level Science-Math-Environment Exhibition 2017 under the joint initiative of GCERT Gandhinagar and Nagar Prathmik Shikshan Samiti, Surat. Created a model on Laser-based Boundary Alarm for sustainable development.",
+    images: ["/milestones/science-exhibition-certificate.jpg"],
   },
 ];
 
@@ -119,13 +244,16 @@ const palette = {
   indigo: { bg: "rgba(99,102,241,0.15)",  icon: "#818CF8", border: "rgba(99,102,241,0.35)", bar: "#6366F1" },
   rose:   { bg: "rgba(225,29,72,0.15)",   icon: "#FB7185", border: "rgba(225,29,72,0.35)",  bar: "#E11D48" },
   violet: { bg: "rgba(139,92,246,0.15)",  icon: "#A78BFA", border: "rgba(139,92,246,0.35)", bar: "#8B5CF6" },
+  blue:   { bg: "rgba(59,130,246,0.15)",  icon: "#60A5FA", border: "rgba(59,130,246,0.35)", bar: "#3B82F6" },
+  green:  { bg: "rgba(34,197,94,0.15)",   icon: "#4ADE80", border: "rgba(34,197,94,0.35)",  bar: "#22C55E" },
 };
 
 const categoryLabel: Record<MilestoneCategory, string> = {
-  achievement: "Achievement",
-  award: "Award",
-  volunteering: "Volunteering",
-  leadership: "Leadership",
+  achievement:   "Achievement",
+  award:         "Award",
+  volunteering:  "Volunteering",
+  leadership:    "Leadership",
+  participation: "Participation",
 };
 
 // ─── IMAGE SLIDER ─────────────────────────────────────────────────────────────
@@ -223,43 +351,31 @@ export default function Milestones() {
   const [carouselIdx, setCarouselIdx] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
-  // ── FIX: flag to prevent the scroll listener fighting programmatic scrollTo ──
   const isScrollingByCode = useRef(false);
 
   const filtered = filter === "all" ? milestones : milestones.filter((m) => m.category === filter);
 
-  // Reset carousel index when filter changes
   useEffect(() => { setCarouselIdx(0); }, [filter]);
 
-  // ── FIX: Sync carousel scroll position to carouselIdx (arrows / dot clicks)
-  // Guard with isScrollingByCode so the scroll listener ignores our own scrollTo.
   useEffect(() => {
     const el = carouselRef.current;
     if (!el) return;
     const card = el.querySelector(".ms-carousel-card") as HTMLElement;
     if (!card) return;
-
     isScrollingByCode.current = true;
-
     const elStyle = getComputedStyle(el);
     const gap = parseFloat(elStyle.columnGap || elStyle.gap || "16") || 16;
     const cardW = card.getBoundingClientRect().width + gap;
-
     el.scrollTo({ left: carouselIdx * cardW, behavior: "smooth" });
-
-    // Release the flag after the smooth scroll animation finishes (~450 ms)
     const t = setTimeout(() => { isScrollingByCode.current = false; }, 500);
     return () => clearTimeout(t);
   }, [carouselIdx]);
 
-  // ── FIX: Track native finger-scroll → update dot / counter
-  // Skip when we triggered the scroll ourselves to avoid a feedback loop.
   useEffect(() => {
     const el = carouselRef.current;
     if (!el) return;
-
     const onScroll = () => {
-      if (isScrollingByCode.current) return;          // ignore our own scrollTo
+      if (isScrollingByCode.current) return;
       const card = el.querySelector(".ms-carousel-card") as HTMLElement;
       if (!card) return;
       const elStyle = getComputedStyle(el);
@@ -268,7 +384,6 @@ export default function Milestones() {
       const idx = Math.round(el.scrollLeft / cardW);
       setCarouselIdx(Math.min(Math.max(idx, 0), filtered.length - 1));
     };
-
     el.addEventListener("scroll", onScroll, { passive: true });
     return () => el.removeEventListener("scroll", onScroll);
   }, [filtered.length]);
@@ -287,7 +402,6 @@ export default function Milestones() {
   return (
     <section className="section section-dark" id="milestones">
       <style>{`
-        /* ── FILTER TABS ── */
         .ms-filters {
           display: flex; flex-wrap: wrap; gap: 0.5rem;
           margin-bottom: 2rem; justify-content: center;
@@ -303,7 +417,6 @@ export default function Milestones() {
         .ms-filter-btn:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.05); }
         .ms-filter-btn.active { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.28); color: #fff; }
 
-        /* ── DESKTOP GRID ── */
         .ms-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -311,103 +424,55 @@ export default function Milestones() {
         }
         @media (max-width: 767px) { .ms-grid { display: none; } }
 
-        /* ── MOBILE CAROUSEL ── */
         .ms-mobile-wrap { display: none; }
         @media (max-width: 767px) { .ms-mobile-wrap { display: block; } }
 
         .ms-carousel {
-          display: flex;
-          gap: 16px;
-          overflow-x: scroll;
-          scroll-snap-type: x mandatory;
-          -webkit-overflow-scrolling: touch;
-          scrollbar-width: none;
-          padding: 0.5rem 0 1rem;
-          padding-right: 2rem;
-          /* FIX: ensure scroll-snap works well with peek */
-          scroll-padding-left: 0;
+          display: flex; gap: 16px;
+          overflow-x: scroll; scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch; scrollbar-width: none;
+          padding: 0.5rem 0 1rem; padding-right: 2rem;
         }
         .ms-carousel::-webkit-scrollbar { display: none; }
+        .ms-carousel-card { flex: 0 0 calc(85vw); max-width: 340px; scroll-snap-align: start; cursor: pointer; }
 
-        .ms-carousel-card {
-          flex: 0 0 calc(85vw);
-          max-width: 340px;
-          scroll-snap-align: start;
-          cursor: pointer;
-        }
-
-        /* Counter + dots */
         .ms-carousel-footer {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-top: 0.75rem;
-          padding: 0 0.25rem;
+          display: flex; align-items: center; justify-content: space-between;
+          margin-top: 0.75rem; padding: 0 0.25rem;
         }
-        .ms-carousel-counter {
-          font-size: 0.72rem; font-weight: 700;
-          color: rgba(255,255,255,0.35);
-          font-family: 'Quicksand', sans-serif;
-        }
-        .ms-carousel-dots {
-          display: flex; gap: 5px; align-items: center;
-        }
+        .ms-carousel-counter { font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.35); font-family: 'Quicksand', sans-serif; }
+        .ms-carousel-dots { display: flex; gap: 5px; align-items: center; }
         .ms-carousel-dot {
           width: 6px; height: 6px; border-radius: 50%;
-          background: rgba(255,255,255,0.2);
-          border: none; padding: 0; cursor: pointer;
-          transition: all .22s;
+          background: rgba(255,255,255,0.2); border: none; padding: 0; cursor: pointer; transition: all .22s;
         }
-        .ms-carousel-dot.active {
-          background: #fff;
-          width: 18px; border-radius: 3px;
-        }
-        .ms-carousel-arrows {
-          display: flex; gap: 0.5rem;
-        }
+        .ms-carousel-dot.active { background: #fff; width: 18px; border-radius: 3px; }
+        .ms-carousel-arrows { display: flex; gap: 0.5rem; }
         .ms-carousel-arr {
           width: 32px; height: 32px; border-radius: 50%;
-          background: rgba(255,255,255,0.08);
-          border: 1px solid rgba(255,255,255,0.12);
+          background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
           display: flex; align-items: center; justify-content: center;
           cursor: pointer; transition: background .2s;
         }
         .ms-carousel-arr:hover { background: rgba(255,255,255,0.14); }
         .ms-carousel-arr:disabled { opacity: 0.25; cursor: default; }
-        .ms-carousel-arr svg { display: block; }
 
-        /* ── SWIPE HINT ── */
         .ms-swipe-hint {
           display: flex; align-items: center; gap: 0.4rem;
-          font-size: 0.7rem; font-weight: 600;
-          color: rgba(255,255,255,0.28);
-          margin-bottom: 0.75rem;
-          font-family: 'Quicksand', sans-serif;
-          animation: hintFade 2.5s ease forwards;
-          animation-delay: 0.6s;
-          opacity: 0;
+          font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.28);
+          margin-bottom: 0.75rem; font-family: 'Quicksand', sans-serif;
+          animation: hintFade 2.5s ease forwards; animation-delay: 0.6s; opacity: 0;
         }
-        @keyframes hintFade {
-          0%   { opacity: 0; transform: translateX(-4px); }
-          20%  { opacity: 1; transform: translateX(0); }
-          80%  { opacity: 1; }
-          100% { opacity: 0; }
-        }
+        @keyframes hintFade { 0%{opacity:0;transform:translateX(-4px)} 20%{opacity:1;transform:translateX(0)} 80%{opacity:1} 100%{opacity:0} }
 
-        /* ── SHARED CARD SHELL ── */
         .ms-card {
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.09);
-          border-radius: 20px; overflow: hidden;
-          cursor: pointer; transition: all .32s cubic-bezier(.22,1,.36,1);
+          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+          border-radius: 20px; overflow: hidden; cursor: pointer;
+          transition: all .32s cubic-bezier(.22,1,.36,1);
           position: relative; display: flex; flex-direction: column;
         }
-        .ms-card:hover {
-          background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18);
-          transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-        }
+        .ms-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
         .ms-card-bar { height: 3px; width: 100%; flex-shrink: 0; }
-
         .ms-card-body { padding: 1.4rem 1.5rem 1.2rem; flex: 1; display: flex; flex-direction: column; gap: 0.9rem; }
         .ms-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
         .ms-card-ico { width: 44px; height: 44px; border-radius: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -418,14 +483,8 @@ export default function Milestones() {
         .ms-card-title { font-size: 0.97rem; font-weight: 700; color: #fff; line-height: 1.3; margin: 0; }
         .ms-card-org { font-size: 0.75rem; font-weight: 700; margin-top: 0.15rem; }
         .ms-card-desc { font-size: 0.8rem; color: rgba(255,255,255,0.48); font-weight: 500; line-height: 1.7; margin: 0; }
-        .ms-card-desc-compact {
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
+        .ms-card-desc-compact { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
-        /* thumbnails */
         .ms-card-thumbs { display: flex; gap: 0.5rem; padding: 0 1.5rem 1.4rem; }
         .ms-card-thumb-wrap { flex: 1; height: 72px; border-radius: 10px; overflow: hidden; position: relative; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
         .ms-card-thumb-img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform .4s ease; }
@@ -433,14 +492,12 @@ export default function Milestones() {
         .ms-card-thumb-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
         .ms-card-thumb-more { position: absolute; inset: 0; background: rgba(0,0,0,0.55); display: flex; align-items: center; justify-content: center; font-size: 0.82rem; font-weight: 700; color: #fff; }
 
-        /* hover overlay */
         .ms-card-view-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); display: flex; align-items: center; justify-content: center; transition: background .28s; pointer-events: none; border-radius: 20px; }
         .ms-card:hover .ms-card-view-overlay { background: rgba(0,0,0,0.12); }
         .ms-card-view-pill { opacity: 0; transform: scale(0.85) translateY(6px); background: rgba(255,255,255,0.95); border-radius: 999px; padding: 0.42rem 1rem; font-size: 0.73rem; font-weight: 700; color: #111; display: flex; align-items: center; gap: 0.4rem; transition: all .25s cubic-bezier(.22,1,.36,1); box-shadow: 0 4px 16px rgba(0,0,0,0.3); white-space: nowrap; }
         .ms-card-view-pill svg { flex-shrink: 0; }
         .ms-card:hover .ms-card-view-pill { opacity: 1; transform: scale(1) translateY(0); }
 
-        /* ── MODAL ── */
         .ms-modal-bg {
           position: fixed; inset: 0; z-index: 800;
           background: rgba(0,0,0,0.82); backdrop-filter: blur(12px);
@@ -513,16 +570,15 @@ export default function Milestones() {
       `}</style>
 
       <div className="container">
-        {/* Section header */}
         <div className="sec-head">
           <p className="sec-tag">Journey</p>
           <h2 className="sec-h2 light">Milestones</h2>
           <p className="sec-lead light">Achievements, awards, and causes I've been part of along the way.</p>
         </div>
 
-        {/* Filter tabs */}
+        {/* Filter tabs — now includes participation */}
         <div className="ms-filters" role="group" aria-label="Filter milestones by category">
-          {(["all", "achievement", "award", "leadership"] as const).map((cat) => (
+          {(["all", "achievement", "award", "leadership", "volunteering", "participation"] as const).map((cat) => (
             <button
               key={cat}
               className={`ms-filter-btn${filter === cat ? " active" : ""}`}
@@ -535,40 +591,43 @@ export default function Milestones() {
 
         {/* ── DESKTOP GRID ── */}
         <div className="ms-grid">
-          {filtered.map((item, i) => (
-            <div key={i} className="ms-card" onClick={() => setSelected(item)}
-              role="button" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && setSelected(item)}
-              aria-label={`View details for ${item.title}`}>
-              <div className="ms-card-bar" style={{ background: palette[item.colorClass].bar }} />
-              <div className="ms-card-body">
-                <div className="ms-card-top">
-                  <div className="ms-card-ico" style={{ background: palette[item.colorClass].bg }}>
-                    <div style={{ color: palette[item.colorClass].icon }}>{item.icon}</div>
+          {filtered.map((item, i) => {
+            const p = palette[item.colorClass];
+            return (
+              <div key={i} className="ms-card" onClick={() => setSelected(item)}
+                role="button" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && setSelected(item)}
+                aria-label={`View details for ${item.title}`}>
+                <div className="ms-card-bar" style={{ background: p.bar }} />
+                <div className="ms-card-body">
+                  <div className="ms-card-top">
+                    <div className="ms-card-ico" style={{ background: p.bg }}>
+                      <div style={{ color: p.icon }}>{item.icon}</div>
+                    </div>
+                    <div className="ms-card-badges">
+                      <span className="ms-card-cat" style={{ background: p.bg, color: p.icon, borderColor: p.border }}>
+                        {categoryLabel[item.category]}
+                      </span>
+                      <span className="ms-card-year">{item.year}</span>
+                    </div>
                   </div>
-                  <div className="ms-card-badges">
-                    <span className="ms-card-cat" style={{ background: palette[item.colorClass].bg, color: palette[item.colorClass].icon, borderColor: palette[item.colorClass].border }}>
-                      {categoryLabel[item.category]}
-                    </span>
-                    <span className="ms-card-year">{item.year}</span>
+                  <div>
+                    <p className="ms-card-title">{item.title}</p>
+                    <p className="ms-card-org" style={{ color: p.icon }}>{item.org}</p>
                   </div>
+                  <p className="ms-card-desc">{item.description}</p>
                 </div>
-                <div>
-                  <p className="ms-card-title">{item.title}</p>
-                  <p className="ms-card-org" style={{ color: palette[item.colorClass].icon }}>{item.org}</p>
+                <CardThumbs images={item.images} colorBar={p.bar} />
+                <div className="ms-card-view-overlay">
+                  <span className="ms-card-view-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke={p.icon} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="13" height="13">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    View Details
+                  </span>
                 </div>
-                <p className="ms-card-desc">{item.description}</p>
               </div>
-              <CardThumbs images={item.images} colorBar={palette[item.colorClass].bar} />
-              <div className="ms-card-view-overlay">
-                <span className="ms-card-view-pill">
-                  <svg viewBox="0 0 24 24" fill="none" stroke={palette[item.colorClass].icon} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="13" height="13">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-                  </svg>
-                  View Details
-                </span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* ── MOBILE CAROUSEL ── */}
@@ -619,29 +678,22 @@ export default function Milestones() {
             })}
           </div>
 
-          {/* Footer: counter + pill dots + arrows */}
           <div className="ms-carousel-footer">
             <span className="ms-carousel-counter">{carouselIdx + 1} / {filtered.length}</span>
-
             <div className="ms-carousel-dots">
               {filtered.map((_, i) => (
                 <button key={i} className={`ms-carousel-dot${i === carouselIdx ? " active" : ""}`}
                   onClick={() => setCarouselIdx(i)} aria-label={`Go to card ${i + 1}`} />
               ))}
             </div>
-
             <div className="ms-carousel-arrows">
               <button className="ms-carousel-arr" disabled={carouselIdx === 0}
                 onClick={() => setCarouselIdx((i) => Math.max(0, i - 1))} aria-label="Previous">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
-                  <polyline points="15 18 9 12 15 6"/>
-                </svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="14" height="14"><polyline points="15 18 9 12 15 6"/></svg>
               </button>
               <button className="ms-carousel-arr" disabled={carouselIdx === filtered.length - 1}
                 onClick={() => setCarouselIdx((i) => Math.min(filtered.length - 1, i + 1))} aria-label="Next">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
-                  <polyline points="9 18 15 12 9 6"/>
-                </svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="14" height="14"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
           </div>
