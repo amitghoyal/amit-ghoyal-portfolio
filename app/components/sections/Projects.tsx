@@ -90,19 +90,19 @@ const projects = [
     gradientFrom: "#C2EAD9",
     gradientTo: "#A8E6CF",
     description:
-      "A custom-built responsive developer portfolio featuring a project gallery with filters, scroll-reveal animations, dark-section contrast, and a working contact form — served via a Node.js backend.",
-    tags: ["Node.js", "HTML", "CSS", "JavaScript"],
+      "A custom-built responsive developer portfolio featuring a project gallery with filters, scroll-reveal animations, dark-section contrast, and a working contact form — served via a Next.js backend.",
+    tags: ["Next.js", "HTML", "CSS", "JavaScript"],
     liveUrl: "",
     githubUrl: "https://github.com/amitghoyal",
     highlights: [
-      "Node.js server with Express for backend routing",
+      "Next.js server with Express for backend routing",
       "Scroll-reveal animations on page load",
       "Project gallery with category filters",
       "Working contact form with server-side handling",
       "Fully responsive across all screen sizes",
     ],
     techDetails:
-      "Node.js + Express serves the portfolio as a static site with a lightweight backend for contact form submissions. Pure HTML/CSS/JS on the frontend with custom scroll animations and no external UI frameworks.",
+      "Next.js + Express serves the portfolio as a static site with a lightweight backend for contact form submissions. Pure HTML/CSS/JS on the frontend with custom scroll animations and no external UI frameworks.",
   },
 ];
 
