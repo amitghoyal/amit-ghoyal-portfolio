@@ -16,7 +16,6 @@ const projects = [
       "An AI-powered health companion for women with PCOS/PCOD. Predicts risk using a trained ML model, recommends personalized lifestyle changes, and helps users find nearby hospitals — all through a clean, empathetic interface built for accessibility.",
     tags: ["Python", "Flask", "Scikit-learn", "MySQL", "Google Maps API", "Bootstrap"],
     liveUrl: "",
-    githubUrl: "https://github.com/amitghoyal",
     highlights: [
       "ML-based PCOS/PCOD risk prediction (symptom & health data input)",
       "Personalized lifestyle & diet recommendations based on severity",
